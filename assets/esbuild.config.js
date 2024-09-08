@@ -14,7 +14,8 @@ const buildOptions = {
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-  }
+  },
+  external: ['react', 'react-dom'],
 };
 
 // Check if watch mode is enabled

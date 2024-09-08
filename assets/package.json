@@ -9,14 +9,15 @@
     "build": "node esbuild.config.js",
     "watch": "node esbuild.config.js --watch"
   },
-  "dependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "babel-loader": "^8.2.3",
     "esbuild": "0.23.1"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }
