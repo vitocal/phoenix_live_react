@@ -7,7 +7,7 @@ const buildOptions = {
   bundle: true,
   minify: true,
   platform: 'browser',
-  format: 'esm',
+  format: 'iife',
   target: ['es2017'],
   loader: {
     '.js': 'jsx',

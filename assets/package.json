@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Hook to render live react components in Phoenix LiveView.",
   "license": "MIT",
-  "main": "./priv/static/phoenix_live_react.js",
+  "main": "./assets/js/phoenix_live_react.js",
   "repository": {},
   "scripts": {
     "build": "node esbuild.config.js",
