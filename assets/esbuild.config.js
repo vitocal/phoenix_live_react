@@ -9,8 +9,7 @@ const buildOptions = {
   platform: 'browser',
   format: 'iife',
   globalName: 'phoenix_live_react',
-  target: ['es2015'],
-  external: ['react', 'react-dom'],
+  target: ['es2017'],
   loader: {
     '.js': 'jsx',
   },
