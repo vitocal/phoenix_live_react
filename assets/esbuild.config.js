@@ -7,8 +7,7 @@ const buildOptions = {
   bundle: true,
   minify: true,
   platform: 'browser',
-  format: 'iife',
-  globalName: 'phoenix_live_react',
+  format: 'esm',
   target: ['es2017'],
   loader: {
     '.js': 'jsx',
