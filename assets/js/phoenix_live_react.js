@@ -1,26 +1,29 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-const render = function(el, target, componentClass, additionalProps = {}, previousProps = {}) {
+import { createRoot } from 'react-dom/client';
+
+const render = function (el, target, componentClass, additionalProps = {}, previousProps = {}) {
   let props = el.dataset.liveReactProps ? JSON.parse(el.dataset.liveReactProps) : {};
   if (el.dataset.liveReactMerge) {
-    props = {...previousProps, ...props, ...additionalProps}
+    props = { ...previousProps, ...props, ...additionalProps }
   } else {
-    props = {...props, ...additionalProps}
+    props = { ...props, ...additionalProps }
   }
   const reactElement = React.createElement(componentClass, props);
-  ReactDOM.render(reactElement, target);
+  const root = createRoot(target);
+  root.render(reactElement)
   return props;
 }
 
-const initLiveReactElement = function(el, additionalProps) {
+const initLiveReactElement = function (el, additionalProps) {
   const target = el.nextElementSibling;
   const componentClass = Array.prototype.reduce.call(el.dataset.liveReactClass.split('.'), (acc, el) => { return acc[el] }, window);
   render(el, target, componentClass, additionalProps);
-  return {target: target, componentClass: componentClass};
+  return { target: target, componentClass: componentClass };
 }
 
-const initLiveReact = function() {
+const initLiveReact = function () {
   const elements = document.querySelectorAll('[data-live-react-class]')
   Array.prototype.forEach.call(elements, el => {
     initLiveReactElement(el)
