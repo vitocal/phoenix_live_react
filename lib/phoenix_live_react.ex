@@ -68,6 +68,22 @@ defmodule PhoenixLiveReact do
     ])
   end
 
+  def from_stream(stream) do
+    # %{name, dom_id, ref, inserts, deletes, reset?, consumable?}
+    case stream do
+      # %{inserts: items} when is_list(inserts) and inserts != [] ->
+      %{inserts: items} when is_list(items) and items !== [] ->
+        Enum.map(items, &only_item/1)
+
+      _ ->
+        dbg(stream)
+    end
+  end
+
+  def only_item({_dom_id, _at, item, _length}) do
+    item
+  end
+
   defp receiver_element(name, props, options) do
     attr = Keyword.get(options, :receiver, [])
     tag = Keyword.get(options, :receiver_tag, :div)
@@ -91,6 +107,7 @@ defmodule PhoenixLiveReact do
     attr = Keyword.get(options, :container, [])
     tag = Keyword.get(options, :container_tag, :div)
     binding_prefix = Keyword.get(options, :binding_prefix, "phx-")
+
     id =
       case Keyword.get(options, :id) do
         nil -> nil

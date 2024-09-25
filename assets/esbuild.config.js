@@ -7,8 +7,8 @@ const buildOptions = {
   bundle: true,
   minify: true,
   platform: 'browser',
-  format: 'iife',
-  target: ['es2017'],
+  format: 'esm',
+  target: ['esnext'],
   loader: {
     '.js': 'jsx',
   },
@@ -23,17 +23,11 @@ const watchMode = process.argv.includes('--watch');
 
 if (watchMode) {
   // Watch mode
-  esbuild.build({
-    ...buildOptions,
-    watch: {
-      onRebuild(error, result) {
-        if (error) console.error('watch build failed:', error);
-        else console.log('watch build succeeded:', result);
-      },
-    },
-  }).then(result => {
-    console.log('watching...');
-  }).catch(() => process.exit(1));
+  esbuild.context({ ...buildOptions, 'sourcemap': 'inline' })
+    .then((ctx) => ctx.watch())
+    .then(result => {
+      console.log('watching...');
+    }).catch(() => process.exit(1));
 } else {
   // Build once
   esbuild.build(buildOptions).catch(() => process.exit(1));
