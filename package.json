@@ -5,7 +5,9 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    "import": "./assets/js/phoenix_live_react.js"
+    ".": {
+      "import": "./assets/js/phoenix_live_react.js"
+    }
   },
   "author": "Robin Fidder",
   "repository": {
