@@ -1,8 +1,3 @@
-// import React from "react"
-// import ReactDOM from "react-dom"
-
-// import { createRoot } from 'react-dom/client';
-
 const loadReact = async () => {
   return {
     React: (await import("react")).default,

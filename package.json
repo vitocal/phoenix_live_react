@@ -3,7 +3,10 @@
   "version": "0.4.2",
   "description": "Hook to render live react components in Phoenix LiveView.",
   "license": "MIT",
-  "main": "./assets/js/phoenix_live_react.js",
+  "type": "module",
+  "exports": {
+    "import": "./assets/js/phoenix_live_react.js"
+  },
   "author": "Robin Fidder",
   "repository": {
     "type": "git",
