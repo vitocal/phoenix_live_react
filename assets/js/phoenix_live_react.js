@@ -19,7 +19,6 @@ const render = async function (el, target, componentClass, additionalProps = {},
   }
 
   if (!reactRoots[el.id]) {
-    console.info("start react root", el.id)
     reactRoots[el.id] = ReactDOMClient.createRoot(target);
   }
 
@@ -34,13 +33,6 @@ const initLiveReactElement = async function (el, additionalProps) {
   await render(el, target, componentClass, additionalProps);
   return { target: target, componentClass: componentClass };
 }
-
-// const initLiveReact = function () {
-//   const elements = document.querySelectorAll('[data-live-react-class]')
-//   Array.prototype.forEach.call(elements, el => {
-//     initLiveReactElement(el)
-//   });
-// }
 
 const LiveReact = {
   async mounted() {
@@ -66,12 +58,11 @@ const LiveReact = {
   },
 
   destroyed() {
-    // const { target } = this;
-    // ReactDOM.unmountComponentAtNode(target);
+    const { target } = this;
+    ReactDOM.unmountComponentAtNode(target);
   }
 }
 
 export {
   LiveReact as default,
-  // initLiveReact, initLiveReactElement
 };
