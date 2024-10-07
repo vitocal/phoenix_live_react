@@ -4,7 +4,6 @@
   "description": "Hook to render live react components in Phoenix LiveView.",
   "license": "MIT",
   "type": "module",
-  "main": "assets/js/phoenix_live_react.js",
   "exports": {
     ".": {
       "import": "./assets/js/phoenix_live_react.js"
